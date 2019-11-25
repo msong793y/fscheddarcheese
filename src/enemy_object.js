@@ -1,0 +1,16 @@
+const Util = require("./util.js");
+const MovingObject = require("./moving_object.js");
+Util.inherits(EnemeyObject, MovingObject);
+
+
+function EnemeyObject(data){
+
+    MovingObject.call(this, {
+        pos: data.pos,
+        vel: Util.randomVec(3)
+    });
+
+}
+
+
+module.exports = EnemeyObject;
