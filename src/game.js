@@ -1,9 +1,12 @@
-const EnemeyObject = require('./enemy_object');
+// const EnemeyObject = require('./enemy_object');
+const Util = require("./util.js");
 
+const Sloth= require("./sloth")
+const TinyMouse =require('./tiny_mouse')
 
 const Game = function() {
     this.DIM_X = 800;
-    this.DIM_Y= 600;
+    this.DIM_Y= 500;
     this.entities = []
     this.addEnemies();
 }
@@ -14,11 +17,30 @@ Game.prototype.addEnemies = function (){
 
     while(enemyCount > 0){
         let pos = this.startingPosition();
-        this.entities.push(new EnemeyObject({pos:pos}));
+        this.entities.push(new TinyMouse({pos:pos, vel: Util.randomVec(3)}));
         enemyCount--;
     }
 
+    // //adding Sloth
+    // this.entities.push(new Sloth({pos:[250,100], vel:Util.randomVec(5),health:1000}))
+
 }
+
+Game.prototype.addSloth = function () {
+    //adding Sloth
+    const sloth = new Sloth({ pos: [250, 100], vel: [0, 0], health: 1000 })
+    this.entities.push(sloth);
+    return sloth;
+}
+
+//each Step
+
+Game.prototype.step = function step(delta) {
+    this.moveObjects(delta);
+    // this.checkCollisions();
+};
+
+
 
 // intial rendering starting position
 Game.prototype.startingPosition = function (){

@@ -5,9 +5,12 @@ Util.inherits(EnemeyObject, MovingObject);
 
 function EnemeyObject(data){
 
+  
     MovingObject.call(this, {
         pos: data.pos,
-        vel: Util.randomVec(3)
+        // vel: Util.randomVec(3)
+        vel: data.vel,
+        radius: data.radius
     });
 
 }
