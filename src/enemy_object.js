@@ -10,7 +10,10 @@ function EnemeyObject(data){
         pos: data.pos,
         // vel: Util.randomVec(3)
         vel: data.vel,
-        radius: data.radius
+        radius: data.radius,
+        game: data.game
+
+
     });
 
 }
