@@ -7,12 +7,16 @@ function MovingObject(options) {
     this.vel = options.vel;
     this.radius = options.radius;
     this.game =options.game;
+    this.color=options.color;
+    this.speed=options.speed;
 };
 
-
+MovingObject.prototype.collideWith = function collideWith(otherObject) {
+    // default do nothing
+};
 
 MovingObject.prototype.draw = function draw(ctx) {
-    ctx.fillStyle = "blue";
+    ctx.fillStyle = this.color;
 
     ctx.beginPath();
     ctx.arc(
@@ -24,8 +28,8 @@ const NORMAL_FRAME_TIME_DELTA = 1000 / 60;
 MovingObject.prototype.move = function move(timeDelta) {
 
 const velocityScale = timeDelta / NORMAL_FRAME_TIME_DELTA,
-        offsetX = this.vel[0] * velocityScale,
-        offsetY = this.vel[1] * velocityScale;
+        offsetX = this.vel[0] * velocityScale*this.speed,
+        offsetY = this.vel[1] * velocityScale * this.speed;
 
     let x = this.pos[0] + offsetX;
     let y = this.pos[1] + offsetY;

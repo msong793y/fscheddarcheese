@@ -6,10 +6,14 @@ Util.inherits(Sloth, MovingObject);
 
 function Sloth(data) {
     
-    data.radius = 20
+    data.radius = 30;
     data.vel = data.vel || [0,0];
+    data.game= data.game;
+    data.speed=1.9
+    data.color="green"
     MovingObject.call(this,data);
-    this.health = data.health
+    this.health = 1000;
+    
 
 }
 var timeout = null
@@ -23,16 +27,7 @@ Sloth.prototype.power = function power(impulse) {
     // timeout = setTimeout(() => { console.log("hi")}, 500)
 
     timeout= setTimeout(()=>{that.vel[0]=0;that.vel[1]=0},500)
-    // timer = 1000
-    // while (timer>0){
-    //     setInterval(()=>{timer-=100},100)
-    // }Aasww
-    // if (timer <= 0){
-    //     that.vel[0]=0;
-    //     that.vel[1]=0;
-    // }
-    // setTimeout(()=>{that.vel[0]= 0; that.vel[1]=0}, 1000);
-    // that.vel[0] = 0; that.vel[1] = 0
+  
 };
 
 Sloth.prototype.power

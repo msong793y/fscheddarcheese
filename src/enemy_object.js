@@ -8,10 +8,12 @@ function EnemeyObject(data){
   
     MovingObject.call(this, {
         pos: data.pos,
+        speed:data.speed,
         // vel: Util.randomVec(3)
         vel: data.vel,
         radius: data.radius,
-        game: data.game
+        game: data.game,
+        color: "blue"
 
 
     });
