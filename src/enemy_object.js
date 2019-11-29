@@ -13,9 +13,10 @@ function EnemeyObject(data){
         vel: data.vel,
         radius: data.radius,
         game: data.game,
-        color: "blue"
-
-
+        color: "blue",
+        health: data.health,
+        attack: data.attack,
+        type: "enemy"
     });
 
 }

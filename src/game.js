@@ -61,12 +61,12 @@ Game.prototype.checkCollisions=function(){
         if (sloth.isCollidedWith(object)){
             // const collision = sloth.collideWith(object)
             // if(collision)return
-            object.remove()
+            sloth.takeDamage(object.attack)
         }
         if (cat.isCollidedWith(object)) {
             // const collision = sloth.collideWith(object)
             // if(collision)return
-            object.remove()
+            object.takeDamage(cat.attack*cat.speed)
         }
     }
 }

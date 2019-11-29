@@ -1,4 +1,6 @@
 const Util = require("./util");
+// const Sloth =require('./sloth')
+// const EnemyObject = require("./enemy_object")
 // const Game = require('./game.js');
 
 
@@ -8,7 +10,11 @@ function MovingObject(options) {
     this.radius = options.radius;
     this.game =options.game;
     this.color=options.color;
+    this.multiplier=options.multiplier||1;
     this.speed=options.speed;
+    this.health = options.health;
+    this.attack= options.attack;
+    this.type= options.type
 };
 
 MovingObject.prototype.collideWith = function collideWith(otherObject) {
@@ -26,10 +32,9 @@ MovingObject.prototype.draw = function draw(ctx) {
 };
 const NORMAL_FRAME_TIME_DELTA = 1000 / 60;
 MovingObject.prototype.move = function move(timeDelta) {
-
 const velocityScale = timeDelta / NORMAL_FRAME_TIME_DELTA,
-        offsetX = this.vel[0] * velocityScale*this.speed,
-        offsetY = this.vel[1] * velocityScale * this.speed;
+        offsetX = this.vel[0] * velocityScale * this.speed*this.multiplier,
+        offsetY = this.vel[1] * velocityScale * this.speed*this.multiplier;
 
     let x = this.pos[0] + offsetX;
     let y = this.pos[1] + offsetY;
@@ -54,6 +59,19 @@ MovingObject.prototype.isCollidedWith = function isCollidedWith(otherObject) {
 MovingObject.prototype.remove = function remove() {
     // debugger
     this.game.remove(this);
+};
+
+MovingObject.prototype.takeDamage = function takeDamage(attack) {
+    // debugger
+    this.health-= attack
+    // console.log(this.health)
+    if( this.health < 0){
+        if (this.type === "sloth"){
+            // alert("gameOver")
+        } else if(this.type === "enemy") {
+        this.game.remove(this)
+        }else{}
+    }
 };
 
 

@@ -1,4 +1,13 @@
 const Game = require('./game.js');
+let cat='';
+let mouseTimeout;
+let mouseTimeout1;
+let mouseTimeout2;
+let mouseTimeout3;
+let mouseTimeout4;
+let vec=[];
+let canvas;
+
 
 const GameView = function (game, ctx,canvas) {
     this.game = game;
@@ -7,7 +16,8 @@ const GameView = function (game, ctx,canvas) {
     this.sloth = this.game.sloth;
     this.enemies = this.game.enemies;
     this.cat= this.game.cat;
-    // debugger
+    cat = this.cat
+    canvas=this.canvas
     this.entities = this.game.entities
 }
 // GameView.prototype.start = function () {
@@ -22,6 +32,40 @@ const GameView = function (game, ctx,canvas) {
 //     );
 
 // };
+
+function getPosition(event) {
+    // mouseTimeout= setTimeout(accelerator(),300)
+    // accelerator()
+
+    let x = event.x;
+    let y = event.y;
+
+    x -= cat.pos[0];
+    y -= cat.pos[1];
+    vec = [x, y]
+    releaseAttack()
+}
+
+const releaseAttack = () => {
+
+    clearTimeout(mouseTimeout);
+    clearTimeout(mouseTimeout1);
+    clearTimeout(mouseTimeout2);
+    clearTimeout(mouseTimeout3);
+    clearTimeout(mouseTimeout4);
+
+    
+    console.log(cat.speed)
+    console.log(cat.multiplier)
+    cat.attackAction(vec);
+
+    // setTimeout(()=>{
+    //     if (powerLevel >1) {
+    //         powerLevel -= .5
+    //     }
+
+    // },500)
+}
 
 GameView.MOVES = {
     w: [0, -1],
@@ -41,78 +85,55 @@ GameView.prototype.bindKeyHandlers = function bindKeyHandlers() {
     
 };
 
+
+
+
 GameView.prototype.clickHandlers = function dlidkHandlers() {
-    const cat = this.cat;
+   
     const canvas = this.canvas
-    cat.power=4;
-    let powerLevel=1;
-    let mouseTimeout;
-    let vec=[]
 
-    canvas.addEventListener("mousedown", getPosition, false);
+    const accelerator = () => {
+        cat.multiplier = 1
+        mouseTimeout = setTimeout(() => {
 
-    const accelerator= () => {
-        mouseTimeout= setTimeout( ()=>{
-       
-            powerLevel += .5
-            // console.log(powerLevel)
-        },400)
+            cat.multiplier += .2
+            // console.log(cat.multiplier)
+        }, 300)
         mouseTimeout1 = setTimeout(() => {
-          
-                powerLevel += .5
-            // console.log(powerLevel)
 
-        }, 650)
+            cat.multiplier += .2
+            // console.log(cat.multiplier)
+
+        }, 550)
         mouseTimeout2 = setTimeout(() => {
 
-            powerLevel += .5
-            // console.log(powerLevel)
+            cat.multiplier += .3
+            // console.log(cat.multiplier)
 
-        }, 900)
+        }, 800)
         mouseTimeout3 = setTimeout(() => {
 
-            powerLevel += .5
-            // console.log(powerLevel)
+            cat.multiplier += .5
+            // console.log(cat.multiplier)
 
-        }, 1200)
+        }, 1100)
         mouseTimeout4 = setTimeout(() => {
 
-            powerLevel += .5
-            // console.log(powerLevel)
+            cat.multiplier += .5
+            // console.log(cat.multiplier)
 
-        }, 1500)
+        }, 1400)
+
+        // if(cat.multiplier ===5.5){
+        //     releaseAttack();
+        // }
+
     }
+    
 
-    function getPosition(event) {
-        // mouseTimeout= setTimeout(accelerator(),300)
-        accelerator()
-
-        let x = event.x;
-        let y = event.y;
-
-        x -= cat.pos[0];
-        y -= cat.pos[1];
-        vec = [x,y]
-       
-    }
-
-    canvas.addEventListener("mouseup", function () {
-
-        clearTimeout(mouseTimeout);
-        clearTimeout(mouseTimeout1);
-        clearTimeout(mouseTimeout2);
-        clearTimeout(mouseTimeout3);
-        clearTimeout(mouseTimeout4);
-        cat.attack(vec,powerLevel);
-        powerLevel=1;
-        // setTimeout(()=>{
-        //     if (powerLevel >1) {
-        //         powerLevel -= .5
-        //     }
-
-        // },500)
-    }, false);
-  
+    canvas.addEventListener("mousedown", accelerator, false);
+    canvas.addEventListener("mouseup", getPosition , false);
+    
 
 
 };
@@ -128,6 +149,12 @@ GameView.prototype.start = function start() {
 GameView.prototype.animate = function animate(time) {
     const timeDelta = time - this.lastTime;
 
+    // if(cat.multiplier===2.7){
+    //     const canvas = this.canvas
+    //     // debugger
+    //     canvas.addEventListener("mousemove", getPosition, false);
+
+    // }
     this.game.step(timeDelta);
     this.game.draw(this.ctx);
     this.lastTime = time;

@@ -17,7 +17,11 @@ function Cat(data) {
         speed: this.speed,
         radius: this.radius,
         color: this.color,
-        game: data.game
+        game: data.game,
+        health: -1,
+        attack: 1,
+        multiplier: 1,
+        type: "cat"
     });
 
 }
@@ -30,7 +34,7 @@ var timeout5 = null;
 var timeout6 = null;
 var timeout7 = null;
 
-Cat.prototype.attack = function attack(vec,powerLevel) {
+Cat.prototype.attackAction = function attackAction(vec,powerLevel) {
     clearTimeout(timeout);
     clearTimeout(timeout1);
     clearTimeout(timeout2);
@@ -49,8 +53,8 @@ Cat.prototype.attack = function attack(vec,powerLevel) {
     //         console.log(powerLevel)
     //     }, 500)
 
-    this.vel[0] = newVec[0]*powerLevel;
-    this.vel[1] = newVec[1]*powerLevel;
+    this.vel[0] = newVec[0];
+    this.vel[1] = newVec[1];
     // }
     
     timeout=setTimeout(()=>{this.reduceSpeed()},2000)

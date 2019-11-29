@@ -10,9 +10,11 @@ function Sloth(data) {
     data.vel = data.vel || [0,0];
     data.game= data.game;
     data.speed=1.9
-    data.color="green"
+    data.color="green";
+    data.health = 1000;
+    data.attack= 0;
+    data.type= "sloth"
     MovingObject.call(this,data);
-    this.health = 1000;
     
 
 }
