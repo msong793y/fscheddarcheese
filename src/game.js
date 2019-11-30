@@ -27,8 +27,8 @@ const Game = function() {
 }
 
 Game.prototype.setStage = function () {
-   this.gameTinyMouseCount=70
-   this.gameHomingMouseCount=0
+   this.gameTinyMouseCount=50
+   this.gameHomingMouseCount=20
     // debugger;
 
    this.addEnemies(20,5);
@@ -43,18 +43,18 @@ Game.prototype.checkGameProgression = function () {
     console.log(this.tinyMouse.length)
 
     if (this.gameTinyMouseCount>0 || this.gameHomingMouseCount>0){
-        if (this.tinyMouse.length<10){
+        if (this.tinyMouse.length < 10 && this.gameTinyMouseCount > 9){
             
             this.gameTinyMouseCount-=10;
             this.addEnemies(10,0)
         }
-        if (this.homingMouse.length<3){
+        if (this.homingMouse.length<3 && this.gameHomingMouseCount>4){
             this.gameHomingMouseCount-=5;
             this.addEnemies(0,5)
         } 
 
     } 
-    else if (this.gameTinyMouseCount < 3 && this.gameHomingMouseCount < 1){
+    else if (this.gameTinyMouseCount < 3 && this.gameHomingMouseCount < 1 && this.tinyMouse.length<2 &&this.homingMouse.length===0){
         alert("you won")
     }
       

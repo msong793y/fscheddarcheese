@@ -11,7 +11,7 @@ function HomingMouse(data) {
     EnemeyObject.call(this, {
         pos: data.pos,
         vel: data.vel,
-        speed: 1.1,
+        speed: .8,
         radius: 20,
         game: data.game,
         health: 25,

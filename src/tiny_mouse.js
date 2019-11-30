@@ -11,7 +11,7 @@ function TinyMouse(data){
     EnemeyObject.call(this,{
         pos: data.pos,
         vel: data.vel,
-        speed: .7,
+        speed: .6,
         radius: 10,
         game: data.game,
         health: 10,
