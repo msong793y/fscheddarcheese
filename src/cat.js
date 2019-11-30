@@ -14,7 +14,7 @@ function Cat(data) {
     this.vel = data.vel || [0, 0];
     this.color = "red"
     this.game=data.game;
-    this.speed= 4;
+    this.speed= 8;
     this.image=catImage;
 
   
@@ -53,7 +53,7 @@ Cat.prototype.attackAction = function attackAction(vec) {
     clearTimeout(timeout6);
     clearTimeout(timeout7);
 
-    this.speed=4
+    this.speed=8
 
     const newVec= Util.dir(vec)
     // while(powerLevel>0){

@@ -75,16 +75,18 @@ MovingObject.prototype.remove = function remove() {
 };
 
 MovingObject.prototype.takeDamage = function takeDamage(attack) {
-    // debugger
     this.health-= attack
     // console.log(this.health)
     if( this.health < 0){
         if (this.type === "sloth"){
             // alert("gameOver")
-        } else if(this.type === "enemy") {
+        } else if(this.type === "TinyMouse") {
         this.game.remove(this)
-        }else{}
+        }
+    } else if (this.type === "HomingMouse") {
+        this.game.remove(this)
     }
+    
 };
 
 

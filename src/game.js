@@ -13,22 +13,62 @@ const Game = function() {
     this.sloth = new Sloth({ pos: [250, 100], vel: [0, 0], health: 1000, game: this })
     this.cat = new Cat({ pos: [300, 100], vel: [0, 0], game: this})
     this.enemies=[];
+    this.tinyMouse=[];
     this.homingMouse=[];
     this.entities = [];
+    this.level = 1;
+    this.gameTinyMouseCount=0;
+    this.gameHomingMouseCount=0;
     this.addSloth();
-    this.addEnemies();
+    // this.addEnemies(20, 5);
+    this.setStage();
     this.addCat();
+    // debugger
 }
 
+Game.prototype.setStage = function () {
+   this.gameTinyMouseCount=70
+   this.gameHomingMouseCount=0
+    // debugger;
+
+   this.addEnemies(20,5);
+   
+}
+// checking to see if enemies needs to be repopulated
+Game.prototype.checkGameProgression = function () {
+    // console.log("tm")
+    // console.log(this.tinyMouse.length)
+    // console.log("tmc")
+    console.log(this.gameTinyMouseCount)
+    console.log(this.tinyMouse.length)
+
+    if (this.gameTinyMouseCount>0 || this.gameHomingMouseCount>0){
+        if (this.tinyMouse.length<10){
+            
+            this.gameTinyMouseCount-=10;
+            this.addEnemies(10,0)
+        }
+        if (this.homingMouse.length<3){
+            this.gameHomingMouseCount-=5;
+            this.addEnemies(0,5)
+        } 
+
+    } 
+    else if (this.gameTinyMouseCount < 3 && this.gameHomingMouseCount < 1){
+        alert("you won")
+    }
+      
+    
+
+}
 // adding enemies into the array
-Game.prototype.addEnemies = function (){
-    let enemyCount= 20
-    let homingMouseCount=10
-    while(enemyCount > 0){
+Game.prototype.addEnemies = function (tinyMouseCount, homingMouseCount){
+   
+    while(tinyMouseCount > 0){
         let pos = this.startingPosition();
         let that = this;
-        this.enemies.push(new TinyMouse({ pos: pos, vel: Util.randomVec(3), game: that }));
-        enemyCount--;
+        this.tinyMouse.push(new TinyMouse({ pos: pos, vel: Util.randomVec(3), game: that }));
+        tinyMouseCount--;
     }
     while (homingMouseCount > 0) {
         let pos = this.startingPosition();
@@ -36,10 +76,10 @@ Game.prototype.addEnemies = function (){
         this.homingMouse.push(new HomingMouse({ pos: pos, vel: Util.randomVec(3), game: that }));
         homingMouseCount--;
     }
-    this.enemies=this.enemies.concat(this.homingMouse)
-    
-    this.entities= this.entities.concat(this.enemies)
-    return this.enemies;
+
+    this.enemies=this.tinyMouse.concat(this.homingMouse)
+    this.entities = [this.sloth,this.cat].concat(this.enemies)
+
     // //adding Sloth
     // this.entities.push(new Sloth({pos:[250,100], vel:Util.randomVec(5),health:1000}))
 
@@ -61,7 +101,9 @@ Game.prototype.step = function step(delta) {
     this.moveObjects(delta);
     this.checkCollisions();
     this.checkInRange();
+    this.checkGameProgression();
 };
+
 
 Game.prototype.checkCollisions=function(){
     const sloth = this.sloth;
@@ -113,7 +155,9 @@ Game.prototype.draw = function (ctx){
     ctx.clearRect(0,0,this.DIM_X,this.DIM_Y)
     ctx.fillStyle = "orange";
     ctx.fillRect(0, 0, this.DIM_X, this.DIM_Y);
-    
+    ctx.fillStyle= "red";
+    ctx.font = "25px Arial";
+    ctx.fillText(`Health ${this.sloth.health} /1000`, 50, 480);
 
     //populating entities
     for( let i=0; i<this.entities.length; i++){
@@ -133,8 +177,23 @@ Game.prototype.moveObjects = function (delta){
 Game.prototype.remove = function remove(object) {
     // console.log(object)
     // console.log(this.enemies.indexOf(object))
-    this.enemies.splice(this.enemies.indexOf(object),1);
-    this.entities = [this.sloth,this.cat].concat(this.enemies)
+    switch (object.type) {
+        case "HomingMouse":
+            this.homingMouse.splice(this.homingMouse.indexOf(object), 1);
+            this.enemies = this.tinyMouse.concat(this.homingMouse)
+            this.entities = [this.sloth, this.cat].concat(this.enemies)
+            
+            break;
+        case "TinyMouse":
+            this.tinyMouse.splice(this.tinyMouse.indexOf(object), 1);
+            this.enemies = this.homingMouse.concat(this.tinyMouse)
+            this.entities = [this.sloth, this.cat].concat(this.enemies)
+            break;
+
+        default:
+            break;
+    }
+    
 };
 
 module.exports = Game;

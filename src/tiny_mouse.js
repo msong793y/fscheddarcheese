@@ -16,6 +16,7 @@ function TinyMouse(data){
         game: data.game,
         health: 10,
         attack: 10,
+        type: "TinyMouse",
         color: "blue"
 
     })

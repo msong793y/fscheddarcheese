@@ -17,7 +17,7 @@ function EnemeyObject(data){
         health: data.health,
         attack: data.attack,
         range: data.range,
-        type: "enemy"
+        type: data.type
     });
 
 }

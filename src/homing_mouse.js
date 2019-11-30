@@ -17,6 +17,7 @@ function HomingMouse(data) {
         health: 25,
         attack: 15,
         range: 280,
+        type: "HomingMouse",
         color: "pink"
     })
 
