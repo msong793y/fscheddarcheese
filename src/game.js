@@ -4,6 +4,7 @@ const Util = require("./util.js");
 const Sloth= require("./sloth")
 const Cat = require("./cat")
 const TinyMouse =require('./tiny_mouse')
+const HomingMouse = require('./homing_mouse')
 
 
 const Game = function() {
@@ -12,6 +13,7 @@ const Game = function() {
     this.sloth = new Sloth({ pos: [250, 100], vel: [0, 0], health: 1000, game: this })
     this.cat = new Cat({ pos: [300, 100], vel: [0, 0], game: this})
     this.enemies=[];
+    this.homingMouse=[];
     this.entities = [];
     this.addSloth();
     this.addEnemies();
@@ -21,13 +23,21 @@ const Game = function() {
 // adding enemies into the array
 Game.prototype.addEnemies = function (){
     let enemyCount= 20
-
+    let homingMouseCount=10
     while(enemyCount > 0){
         let pos = this.startingPosition();
         let that = this;
         this.enemies.push(new TinyMouse({ pos: pos, vel: Util.randomVec(3), game: that }));
         enemyCount--;
     }
+    while (homingMouseCount > 0) {
+        let pos = this.startingPosition();
+        let that = this;
+        this.homingMouse.push(new HomingMouse({ pos: pos, vel: Util.randomVec(3), game: that }));
+        homingMouseCount--;
+    }
+    this.enemies=this.enemies.concat(this.homingMouse)
+    
     this.entities= this.entities.concat(this.enemies)
     return this.enemies;
     // //adding Sloth
@@ -50,6 +60,7 @@ Game.prototype.addCat = function () {
 Game.prototype.step = function step(delta) {
     this.moveObjects(delta);
     this.checkCollisions();
+    this.checkInRange();
 };
 
 Game.prototype.checkCollisions=function(){
@@ -67,6 +78,20 @@ Game.prototype.checkCollisions=function(){
             // const collision = sloth.collideWith(object)
             // if(collision)return
             object.takeDamage(cat.attack*cat.speed)
+        }
+    }
+}
+
+
+//checking to see if object is in range:
+Game.prototype.checkInRange = function () {
+    const sloth = this.sloth;
+    // const homingMouse = this.homingMouse;
+    for (let i = 0; i < this.homingMouse.length; i++) {
+        
+        const hMouse = this.homingMouse[i];
+        if (hMouse.isInRangeOf(hMouse.range,sloth)) {
+            hMouse.retarget(sloth)
         }
     }
 }

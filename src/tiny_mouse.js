@@ -15,7 +15,8 @@ function TinyMouse(data){
         radius: 10,
         game: data.game,
         health: 10,
-        attack: 10
+        attack: 10,
+        color: "blue"
 
     })
 

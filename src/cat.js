@@ -4,6 +4,10 @@ Util.inherits(Cat, MovingObject);
 
 // let timer = 1000;
 
+var catImage = new Image();
+catImage.src = '../assets/cat1.png';
+
+
 function Cat(data) {
 
     this.radius = 20
@@ -11,6 +15,10 @@ function Cat(data) {
     this.color = "red"
     this.game=data.game;
     this.speed= 4;
+    this.image=catImage;
+
+  
+    
     MovingObject.call(this, {
         pos: data.pos,
         vel: data.vel,
@@ -21,7 +29,8 @@ function Cat(data) {
         health: -1,
         attack: 1,
         multiplier: 1,
-        type: "cat"
+        type: "cat",
+        image: this.image
     });
 
 }
@@ -34,7 +43,7 @@ var timeout5 = null;
 var timeout6 = null;
 var timeout7 = null;
 
-Cat.prototype.attackAction = function attackAction(vec,powerLevel) {
+Cat.prototype.attackAction = function attackAction(vec) {
     clearTimeout(timeout);
     clearTimeout(timeout1);
     clearTimeout(timeout2);

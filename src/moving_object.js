@@ -15,6 +15,8 @@ function MovingObject(options) {
     this.health = options.health;
     this.attack= options.attack;
     this.type= options.type
+    this.range=options.range
+    this.image=options.image
 };
 
 MovingObject.prototype.collideWith = function collideWith(otherObject) {
@@ -23,14 +25,19 @@ MovingObject.prototype.collideWith = function collideWith(otherObject) {
 
 MovingObject.prototype.draw = function draw(ctx) {
     ctx.fillStyle = this.color;
+    // debugger
+    if (this.image){
+        ctx.drawImage(this.image,this.pos[0],this.pos[1],50,50)
 
+    }else{
     ctx.beginPath();
     ctx.arc(
         this.pos[0], this.pos[1], this.radius, 0, 2 * Math.PI, true
     );
-    ctx.fill();
+    ctx.fill();}
 };
 const NORMAL_FRAME_TIME_DELTA = 1000 / 60;
+
 MovingObject.prototype.move = function move(timeDelta) {
 const velocityScale = timeDelta / NORMAL_FRAME_TIME_DELTA,
         offsetX = this.vel[0] * velocityScale * this.speed*this.multiplier,
@@ -54,6 +61,12 @@ const velocityScale = timeDelta / NORMAL_FRAME_TIME_DELTA,
 MovingObject.prototype.isCollidedWith = function isCollidedWith(otherObject) {
     const centerDist = Util.dist(this.pos, otherObject.pos);
     return centerDist < (this.radius + otherObject.radius);
+};
+
+MovingObject.prototype.isInRangeOf = function isInRangeOf(range,otherObject) {
+    // debugger
+    const centerDist = Util.dist(this.pos, otherObject.pos) ;
+    return centerDist < (this.radius + otherObject.radius + range);
 };
 
 MovingObject.prototype.remove = function remove() {

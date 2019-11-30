@@ -55,8 +55,7 @@ const releaseAttack = () => {
     clearTimeout(mouseTimeout4);
 
     
-    console.log(cat.speed)
-    console.log(cat.multiplier)
+   
     cat.attackAction(vec);
 
     // setTimeout(()=>{
@@ -68,10 +67,14 @@ const releaseAttack = () => {
 }
 
 GameView.MOVES = {
-    w: [0, -1],
-    a: [-1, 0],
-    s: [0, 1],
-    d: [1, 0],
+    w: [0, -2],
+    a: [-2, 0],
+    s: [0, 2],
+    d: [2, 0],
+    // "s+d": [2, 2],
+    // "s+a": [-2, 2],
+    // "w+d": [2, -2],
+    // "w+a": [-2, -2]
 };
 
 GameView.prototype.bindKeyHandlers = function bindKeyHandlers() {
