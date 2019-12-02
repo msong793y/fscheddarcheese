@@ -26,10 +26,13 @@ MovingObject.prototype.collideWith = function collideWith(otherObject) {
 MovingObject.prototype.draw = function draw(ctx) {
     ctx.fillStyle = this.color;
     // debugger
-    if (this.image){
-        ctx.drawImage(this.image,this.pos[0],this.pos[1],50,50)
+    if (this.type==="cat"){
+        ctx.drawImage(this.image,this.pos[0]-this.radius,this.pos[1]-this.radius,this.radius*2.5,this.radius*2.5)
 
-    }else{
+    } else if(this.type==="sloth") {
+        ctx.drawImage(this.image,5,5,30,30,
+             this.pos[0] - this.radius, this.pos[1] - this.radius, this.radius * 2.5, this.radius * 2.5)
+    } else{
     ctx.beginPath();
     ctx.arc(
         this.pos[0], this.pos[1], this.radius, 0, 2 * Math.PI, true

@@ -2,18 +2,23 @@ const Util = require("./util.js");
 const MovingObject = require("./moving_object.js");
 Util.inherits(Sloth, MovingObject);
 
+
+var slothImage = new Image();
+slothImage.src = '../assets/sloth.png';
+
 // let timer = 1000;
 
 function Sloth(data) {
     
-    data.radius = 30;
+    data.radius = 20;
     data.vel = data.vel || [0,0];
     data.game= data.game;
     data.speed=1.9
     data.color="green";
     data.health = 1000;
     data.attack= 0;
-    data.type= "sloth"
+    data.type= "sloth";
+    data.image = slothImage;
     MovingObject.call(this,data);
     
 
