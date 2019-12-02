@@ -6,6 +6,9 @@ const Cat = require("./cat")
 const TinyMouse =require('./tiny_mouse')
 const HomingMouse = require('./homing_mouse')
 
+var backgroundImage = new Image();
+backgroundImage.src = '../assets/forest.png'; 
+
 
 const Game = function() {
     this.DIM_X = 800;
@@ -153,8 +156,8 @@ Game.prototype.startingPosition = function (){
 //Drawing enemies on the board
 Game.prototype.draw = function (ctx){
     ctx.clearRect(0,0,this.DIM_X,this.DIM_Y)
-    ctx.fillStyle = "orange";
-    ctx.fillRect(0, 0, this.DIM_X, this.DIM_Y);
+    ctx.drawImage(backgroundImage, 0, 0);
+    // ctx.fillRect(0, 0, this.DIM_X, this.DIM_Y);
     ctx.fillStyle= "red";
     ctx.font = "25px Arial";
     ctx.fillText(`Health ${this.sloth.health} /1000`, 50, 480);
