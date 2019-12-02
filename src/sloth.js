@@ -15,7 +15,7 @@ function Sloth(data) {
     data.game= data.game;
     data.speed=1.9
     data.color="green";
-    data.health = 1000;
+    data.health = 5000;
     data.attack= 0;
     data.type= "sloth";
     data.image = slothImage;

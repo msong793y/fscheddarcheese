@@ -1,7 +1,8 @@
 const Util = require("./util.js");
 const EnemeyObject = require("./enemy_object");
 Util.inherits(HomingMouse, EnemeyObject);
-
+var hMImage = new Image();
+hMImage.src = '../assets/mouse.png';
 
 
 function HomingMouse(data) {
@@ -17,8 +18,9 @@ function HomingMouse(data) {
         health: 25,
         attack: 15,
         range: 280,
-        type: "HomingMouse",
-        color: "pink"
+        type: "homingMouse",
+        color: "pink",
+        image: hMImage
     })
 
 }

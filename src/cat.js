@@ -5,7 +5,7 @@ Util.inherits(Cat, MovingObject);
 // let timer = 1000;
 
 var catImage = new Image();
-catImage.src = '../assets/cat1.png';
+catImage.src = '../assets/cat2.png';
 
 
 function Cat(data) {

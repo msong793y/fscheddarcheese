@@ -32,6 +32,12 @@ MovingObject.prototype.draw = function draw(ctx) {
     } else if(this.type==="sloth") {
         ctx.drawImage(this.image,5,5,30,30,
              this.pos[0] - this.radius, this.pos[1] - this.radius, this.radius * 2.5, this.radius * 2.5)
+    } else if (this.type === "tinyMouse") {
+        ctx.drawImage(this.image, 0, 100, 32, 108,
+            this.pos[0] - this.radius, this.pos[1] - this.radius, this.radius*1.5, this.radius * 4.5)
+    } else if (this.type === "homingMouse") {
+        ctx.drawImage(this.image, 0, 100, 32, 108,
+            this.pos[0] - this.radius, this.pos[1] - this.radius, this.radius * 1.5, this.radius * 4.5)
     } else{
     ctx.beginPath();
     ctx.arc(
@@ -83,10 +89,10 @@ MovingObject.prototype.takeDamage = function takeDamage(attack) {
     if( this.health < 0){
         if (this.type === "sloth"){
             // alert("gameOver")
-        } else if(this.type === "TinyMouse") {
+        } else if(this.type === "tinyMouse") {
         this.game.remove(this)
         }
-    } else if (this.type === "HomingMouse") {
+    } else if (this.type === "homingMouse") {
         this.game.remove(this)
     }
     

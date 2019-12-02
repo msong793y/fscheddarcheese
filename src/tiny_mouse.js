@@ -2,7 +2,8 @@ const Util = require("./util.js");
 const EnemeyObject = require("./enemy_object");
 Util.inherits(TinyMouse, EnemeyObject);
 
-
+var tMImage = new Image();
+tMImage.src = '../assets/rat.png';
 
 function TinyMouse(data){
 
@@ -12,12 +13,13 @@ function TinyMouse(data){
         pos: data.pos,
         vel: data.vel,
         speed: .6,
-        radius: 10,
+        radius: 15,
         game: data.game,
-        health: 10,
+        health: 20,
         attack: 10,
-        type: "TinyMouse",
-        color: "blue"
+        type: "tinyMouse",
+        color: "none",
+        image: tMImage
 
     })
 

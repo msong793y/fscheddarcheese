@@ -178,13 +178,13 @@ Game.prototype.remove = function remove(object) {
     // console.log(object)
     // console.log(this.enemies.indexOf(object))
     switch (object.type) {
-        case "HomingMouse":
+        case "homingMouse":
             this.homingMouse.splice(this.homingMouse.indexOf(object), 1);
             this.enemies = this.tinyMouse.concat(this.homingMouse)
             this.entities = [this.sloth, this.cat].concat(this.enemies)
             
             break;
-        case "TinyMouse":
+        case "tinyMouse":
             this.tinyMouse.splice(this.tinyMouse.indexOf(object), 1);
             this.enemies = this.homingMouse.concat(this.tinyMouse)
             this.entities = [this.sloth, this.cat].concat(this.enemies)
