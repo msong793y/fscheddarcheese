@@ -1,7 +1,4 @@
 const Util = require("./util");
-// const Sloth =require('./sloth')
-// const EnemyObject = require("./enemy_object")
-// const Game = require('./game.js');
 
 
 function MovingObject(options) {
@@ -85,10 +82,9 @@ MovingObject.prototype.remove = function remove() {
 
 MovingObject.prototype.takeDamage = function takeDamage(attack) {
     this.health-= attack
-    // console.log(this.health)
     if( this.health < 0){
         if (this.type === "sloth"){
-            // alert("gameOver")
+            alert("gameOver")
         } else if(this.type === "tinyMouse") {
         this.game.remove(this)
         }

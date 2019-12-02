@@ -1,0 +1,8 @@
+{
+  "name": "metaSloth-node",
+  "description": "meta sloth the game",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  }
+}

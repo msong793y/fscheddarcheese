@@ -20,13 +20,6 @@ window.addEventListener('DOMContentLoaded', () => {
     const view = new GameView(game,ctx,canvas)
 
     view.start();
-    // window.view = view;
-    // window.game = game;
-    // window.canvas=canvas;
-    // window.MovingObject = MovingObject;
-    // window.ctx = ctx;
-    // window.Game = Game;
-    // window.GameView = GameView;
 
 
 })

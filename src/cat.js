@@ -81,7 +81,7 @@ Cat.prototype.reduceSpeed = function reduceSpeed() {
     let that = this
     if (that.speed>0){
     that.speed -= 1;
-    // console.log(that.speed)
+
     }
 
 }

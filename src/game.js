@@ -39,9 +39,7 @@ Game.prototype.setStage = function () {
 }
 // checking to see if enemies needs to be repopulated
 Game.prototype.checkGameProgression = function () {
-    // console.log("tm")
-    // console.log(this.tinyMouse.length)
-    // console.log("tmc")
+ 
     console.log(this.gameTinyMouseCount)
     console.log(this.tinyMouse.length)
 
@@ -178,8 +176,7 @@ Game.prototype.moveObjects = function (delta){
 
 // Remove Object
 Game.prototype.remove = function remove(object) {
-    // console.log(object)
-    // console.log(this.enemies.indexOf(object))
+
     switch (object.type) {
         case "homingMouse":
             this.homingMouse.splice(this.homingMouse.indexOf(object), 1);
