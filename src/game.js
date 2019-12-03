@@ -153,12 +153,16 @@ Game.prototype.startingPosition = function (){
 
 //Drawing enemies on the board
 Game.prototype.draw = function (ctx){
+    let totalEnemiesCount = this.enemies.length + this.gameTinyMouseCount + this.gameHomingMouseCount;
+
+
     ctx.clearRect(0,0,this.DIM_X,this.DIM_Y)
     ctx.drawImage(backgroundImage, 0, 0);
     // ctx.fillRect(0, 0, this.DIM_X, this.DIM_Y);
     ctx.fillStyle= "red";
     ctx.font = "25px Arial";
     ctx.fillText(`Health ${this.sloth.health} /1000`, 50, 480);
+    ctx.fillText(`${totalEnemiesCount} Enemies Left`, 550, 480);
 
     //populating entities
     for( let i=0; i<this.entities.length; i++){
