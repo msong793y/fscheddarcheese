@@ -1,0 +1,118 @@
+.hidden {
+    height: 0;
+    width: 0;
+}
+
+
+.content{
+    display:flex;
+    flex-direction: column;
+    background-color: blue;
+}
+
+.page-row {
+    display: flex;
+    justify-content: space-between;
+}
+
+.buttons {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+
+}
+
+
+.outer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+
+
+
+button {
+    margin-top: 10px;
+    margin-right: 20px;
+    margin-bottom: 10px;
+    border: none;
+    padding: 10px;
+    border-radius: 5px;
+    color: red;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bold;
+    font-size: 12px;
+}
+
+button:disabled {
+    color: rgb(139, 133, 133);
+}
+
+.links {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px;
+    margin-bottom: 5px;
+    align-content: space-around;
+
+}
+
+.links img {
+    height: 48px;
+    width: 48px;
+    margin-left: 200px;
+    margin-right: 200px;
+}
+
+.modal {
+        position: fixed;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.5);
+        opacity: 0;
+        visibility: hidden;
+        transform: scale(1.1);
+        transition: visibility 0s linear 0.25s, opacity 0.25s 0s, transform 0.25s;
+    }
+    .modal-content {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background-color: rgb(187, 186, 186);
+        padding: 1rem 1.5rem;
+        width: 24rem;
+        border-radius: 0.5rem;
+        text-align: center;
+    }
+    .close-button {
+        float: right;
+        width: 1.5rem;
+        line-height: 1.5rem;
+        text-align: center;
+        cursor: pointer;
+        border-radius: 0.25rem;
+        background-color: lightgray;
+    }
+    .close-button:hover {
+        background-color: darkgray;
+    }
+    .show-modal {
+        opacity: 1;
+        visibility: visible;
+        transform: scale(1.0);
+        transition: visibility 0s linear 0s, opacity 0.25s 0s, transform 0.25s;
+    }
+
+
+
+#game-canvas{
+    margin-left: 10%;
+    height: 500px;
+    width: 800px;
+    background-color: black;
+}

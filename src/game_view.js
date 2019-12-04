@@ -142,11 +142,20 @@ GameView.prototype.clickHandlers = function dlidkHandlers() {
 };
 
 GameView.prototype.start = function start() {
+
+    let checkGameBegin = false;
+
+
+    // while (checkGameBegin === false) {
+
+    //     this.canvas.addEventListener("mousedown", () => { checkGameBegin= true}, false);
+    // }  
     this.bindKeyHandlers();
     this.clickHandlers();
     this.lastTime = 0;
     // start the animation
     requestAnimationFrame(this.animate.bind(this));
+    
 };
 
 GameView.prototype.animate = function animate(time) {

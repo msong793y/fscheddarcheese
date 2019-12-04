@@ -22,12 +22,15 @@ const Game = function() {
     this.level = 1;
     this.gameTinyMouseCount=0;
     this.gameHomingMouseCount=0;
+    // debugger
     this.addSloth();
-    // this.addEnemies(20, 5);
     this.setStage();
     this.addCat();
-    // debugger
+
 }
+
+
+
 
 Game.prototype.setStage = function () {
    this.gameTinyMouseCount=50
