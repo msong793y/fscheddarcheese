@@ -80,7 +80,7 @@ Cat.prototype.reduceSpeed = function reduceSpeed() {
     // debugger;
     let that = this
     if (that.speed>0){
-    that.speed -= .5;
+    that.speed -= .7;
 
     }else if(that.speed<0){
         that.speed=0;
