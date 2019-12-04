@@ -82,6 +82,8 @@ Cat.prototype.reduceSpeed = function reduceSpeed() {
     if (that.speed>0){
     that.speed -= 1;
 
+    }else if(that.speed<0){
+        that.speed=0;
     }
 
 }

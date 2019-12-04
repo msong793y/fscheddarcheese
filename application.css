@@ -50,7 +50,7 @@ button:disabled {
     color: rgb(139, 133, 133);
 }
 
-.links {
+/* .links {
     display: flex;
     justify-content: space-between;
     margin-top: 10px;
@@ -64,7 +64,7 @@ button:disabled {
     width: 48px;
     margin-left: 200px;
     margin-right: 200px;
-}
+} */
 
 .modal {
         position: fixed;

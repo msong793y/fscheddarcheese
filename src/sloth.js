@@ -6,7 +6,7 @@ Util.inherits(Sloth, MovingObject);
 var slothImage = new Image();
 slothImage.src = '../assets/sloth.png';
 
-// let timer = 1000;
+
 
 function Sloth(data) {
     

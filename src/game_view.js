@@ -6,36 +6,24 @@ let mouseTimeout2;
 let mouseTimeout3;
 let mouseTimeout4;
 let vec=[];
-let canvas;
 
 
-const GameView = function (game, ctx,canvas) {
-    this.game = game;
+
+const GameView = function ( ctx,canvas) {
+    this.game = new Game();
     this.canvas=canvas;
     this.ctx = ctx;
     this.sloth = this.game.sloth;
     this.enemies = this.game.enemies;
     this.cat= this.game.cat;
-    cat = this.cat
-    canvas=this.canvas
-    this.entities = this.game.entities
+    cat = this.cat;
+    canvas=this.canvas;
+    this.entities = this.game.entities;
+    this.start();
 }
-// GameView.prototype.start = function () {
-//     let that = this;
-//     setInterval(function () {
-//             // debugger
-
-//         that.game.draw(that.ctx);
-//         that.game.moveObjects();
-//     },
-//         20
-//     );
-
-// };
 
 function getPosition(event) {
-    // mouseTimeout= setTimeout(accelerator(),300)
-    // accelerator()
+    
 
     let x = event.x;
     let y = event.y;
@@ -58,12 +46,7 @@ const releaseAttack = () => {
    
     cat.attackAction(vec);
 
-    // setTimeout(()=>{
-    //     if (powerLevel >1) {
-    //         powerLevel -= .5
-    //     }
-
-    // },500)
+ 
 }
 
 GameView.MOVES = {
@@ -71,10 +54,7 @@ GameView.MOVES = {
     a: [-2, 0],
     s: [0, 2],
     d: [2, 0],
-    // "s+d": [2, 2],
-    // "s+a": [-2, 2],
-    // "w+d": [2, -2],
-    // "w+a": [-2, -2]
+
 };
 
 GameView.prototype.bindKeyHandlers = function bindKeyHandlers() {
@@ -127,10 +107,7 @@ GameView.prototype.clickHandlers = function dlidkHandlers() {
 
         }, 1400)
 
-        // if(cat.multiplier ===5.5){
-        //     releaseAttack();
-        // }
-
+   
     }
     
 
@@ -143,30 +120,24 @@ GameView.prototype.clickHandlers = function dlidkHandlers() {
 
 GameView.prototype.start = function start() {
 
-    let checkGameBegin = false;
 
-
-    // while (checkGameBegin === false) {
-
-    //     this.canvas.addEventListener("mousedown", () => { checkGameBegin= true}, false);
-    // }  
     this.bindKeyHandlers();
     this.clickHandlers();
-    this.lastTime = 0;
+    this.lastTime = performance.now();
+    // this.lastTime=0;
     // start the animation
+    // debugger;
     requestAnimationFrame(this.animate.bind(this));
     
 };
 
 GameView.prototype.animate = function animate(time) {
+
+   
     const timeDelta = time - this.lastTime;
 
-    // if(cat.multiplier===2.7){
-    //     const canvas = this.canvas
-    //     // debugger
-    //     canvas.addEventListener("mousemove", getPosition, false);
-
-    // }
+    // debugger
+   
     this.game.step(timeDelta);
     this.game.draw(this.ctx);
     this.lastTime = time;

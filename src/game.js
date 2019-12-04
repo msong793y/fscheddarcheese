@@ -24,8 +24,10 @@ const Game = function() {
     this.gameHomingMouseCount=0;
     // debugger
     this.addSloth();
-    this.setStage();
     this.addCat();
+    this.setStage();
+    
+    
 
 }
 
@@ -43,8 +45,8 @@ Game.prototype.setStage = function () {
 // checking to see if enemies needs to be repopulated
 Game.prototype.checkGameProgression = function () {
  
-    console.log(this.gameTinyMouseCount)
-    console.log(this.tinyMouse.length)
+    // console.log(this.gameTinyMouseCount)
+    // console.log(this.tinyMouse.length)
 
     if (this.gameTinyMouseCount>0 || this.gameHomingMouseCount>0){
         if (this.tinyMouse.length < 10 && this.gameTinyMouseCount > 9){
@@ -149,7 +151,7 @@ Game.prototype.checkInRange = function () {
 
 // intial rendering starting position
 Game.prototype.startingPosition = function (){
-    let x = this.DIM_X;
+    let x = this.DIM_X-30;
     let y = Math.random()* this.DIM_Y;
     return [x,y]
 }
@@ -164,7 +166,7 @@ Game.prototype.draw = function (ctx){
     // ctx.fillRect(0, 0, this.DIM_X, this.DIM_Y);
     ctx.fillStyle= "red";
     ctx.font = "25px Arial";
-    ctx.fillText(`Health ${this.sloth.health} /1000`, 50, 480);
+    ctx.fillText(`Health ${this.sloth.health} /5000`, 50, 480);
     ctx.fillText(`${totalEnemiesCount} Enemies Left`, 550, 480);
 
     //populating entities
