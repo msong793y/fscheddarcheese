@@ -3,7 +3,7 @@ const EnemeyObject = require("./enemy_object");
 Util.inherits(TinyMouse, EnemeyObject);
 
 var tMImage = new Image();
-tMImage.src = '../assets/rat.png';
+tMImage.src = './assets/rat.png';
 
 function TinyMouse(data){
 
@@ -12,8 +12,8 @@ function TinyMouse(data){
     EnemeyObject.call(this,{
         pos: data.pos,
         vel: data.vel,
-        speed: .6,
-        radius: 15,
+        speed: .5,
+        radius: 20,
         game: data.game,
         health: 20,
         attack: 10,

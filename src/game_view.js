@@ -31,6 +31,7 @@ function getPosition(event) {
     x -= cat.pos[0];
     y -= cat.pos[1];
     vec = [x, y]
+    cat.vel = [0, 0]
     releaseAttack()
 }
 
@@ -80,30 +81,25 @@ GameView.prototype.clickHandlers = function dlidkHandlers() {
         mouseTimeout = setTimeout(() => {
 
             cat.multiplier += .2
-            // console.log(cat.multiplier)
         }, 300)
         mouseTimeout1 = setTimeout(() => {
 
             cat.multiplier += .2
-            // console.log(cat.multiplier)
 
         }, 550)
         mouseTimeout2 = setTimeout(() => {
 
             cat.multiplier += .3
-            // console.log(cat.multiplier)
 
         }, 800)
         mouseTimeout3 = setTimeout(() => {
 
             cat.multiplier += .5
-            // console.log(cat.multiplier)
 
         }, 1100)
         mouseTimeout4 = setTimeout(() => {
 
             cat.multiplier += .5
-            // console.log(cat.multiplier)
 
         }, 1400)
 
