@@ -4,7 +4,7 @@ Util.inherits(Sloth, MovingObject);
 
 
 var slothImage = new Image();
-slothImage.src = '../assets/sloth.png';
+slothImage.src = './assets/sloth.png';
 
 
 

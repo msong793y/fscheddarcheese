@@ -7,7 +7,7 @@ const TinyMouse =require('./tiny_mouse')
 const HomingMouse = require('./homing_mouse')
 
 var backgroundImage = new Image();
-backgroundImage.src = '../assets/forest.png'; 
+backgroundImage.src = './assets/bg2.png'; 
 
 
 const Game = function() {

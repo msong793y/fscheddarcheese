@@ -5,7 +5,7 @@ Util.inherits(Cat, MovingObject);
 // let timer = 1000;
 
 var catImage = new Image();
-catImage.src = '../assets/cat2.png';
+catImage.src = './assets/cat2.png';
 
 
 function Cat(data) {
@@ -80,7 +80,7 @@ Cat.prototype.reduceSpeed = function reduceSpeed() {
     // debugger;
     let that = this
     if (that.speed>0){
-    that.speed -= 1;
+    that.speed -= .5;
 
     }else if(that.speed<0){
         that.speed=0;

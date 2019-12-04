@@ -23,23 +23,20 @@ window.addEventListener('DOMContentLoaded', () => {
     start.addEventListener('click', () => {
         
        
-        // start.disabled = 'true'
-        // restart.disabled=false;
+        start.disabled = 'true'
+        restart.disabled=false;
         // const canvas = document.getElementById('game-canvas');
         // const ctx = canvas.getContext('2d');
         const view = new GameView(ctx, canvas) 
     
     })
 
-    // restart.disabled = true;
-    // restart.addEventListener('click', () => {
-    //     // const newGame = new Game()
-    //     // const newGameView = new GameView(newGame, ctx, canvas)
-    //     // newGame.addSloth();
-    //     // newGame.setStage();
-    //     // newGame.addCat();
-    //     // newGameView.start();
-    // })
+    restart.disabled = true;
+    restart.addEventListener('click', () => {
+        
+        const view = new GameView(ctx, canvas) 
+      
+    })
 
 })
 

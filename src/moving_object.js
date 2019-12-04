@@ -27,14 +27,27 @@ MovingObject.prototype.draw = function draw(ctx) {
         ctx.drawImage(this.image,this.pos[0]-this.radius,this.pos[1]-this.radius,this.radius*2.5,this.radius*2.5)
 
     } else if(this.type==="sloth") {
+        console.log(this.vel)
         ctx.drawImage(this.image,5,5,30,30,
              this.pos[0] - this.radius, this.pos[1] - this.radius, this.radius * 2.5, this.radius * 2.5)
     } else if (this.type === "tinyMouse") {
-        ctx.drawImage(this.image, 0, 100, 32, 108,
-            this.pos[0] - this.radius, this.pos[1] - this.radius, this.radius*1.5, this.radius * 4.5)
+
+        if(this.vel[0]< 0){
+        ctx.drawImage(this.image, 0, 100, 32, 32,
+            this.pos[0] - this.radius, this.pos[1] - this.radius, this.radius*1.5, this.radius * 1.5)
+        }else{
+            ctx.drawImage(this.image, 0, 32, 32, 32,
+                this.pos[0] - this.radius, this.pos[1] - this.radius, this.radius * 1.5, this.radius * 1.5)
+        }
+
     } else if (this.type === "homingMouse") {
-        ctx.drawImage(this.image, 0, 100, 32, 108,
-            this.pos[0] - this.radius, this.pos[1] - this.radius, this.radius * 1.5, this.radius * 4.5)
+        if (this.vel[0] < 0) {
+            ctx.drawImage(this.image, 0, 100, 32, 32,
+                this.pos[0] - this.radius, this.pos[1] - this.radius, this.radius * 1.5, this.radius * 1.5)
+        } else {
+            ctx.drawImage(this.image, 0, 32, 32, 32,
+                this.pos[0] - this.radius, this.pos[1] - this.radius, this.radius * 1.5, this.radius * 1.5)
+        }
     } else{
     ctx.beginPath();
     ctx.arc(

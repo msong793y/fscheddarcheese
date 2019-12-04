@@ -2,7 +2,7 @@ const Util = require("./util.js");
 const EnemeyObject = require("./enemy_object");
 Util.inherits(HomingMouse, EnemeyObject);
 var hMImage = new Image();
-hMImage.src = '../assets/mouse.png';
+hMImage.src = './assets/mouse.png';
 
 
 function HomingMouse(data) {
@@ -12,8 +12,8 @@ function HomingMouse(data) {
     EnemeyObject.call(this, {
         pos: data.pos,
         vel: data.vel,
-        speed: .8,
-        radius: 20,
+        speed: .6,
+        radius: 25,
         game: data.game,
         health: 25,
         attack: 15,
