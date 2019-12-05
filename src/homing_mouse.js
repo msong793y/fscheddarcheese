@@ -13,7 +13,7 @@ function HomingMouse(data) {
         pos: data.pos,
         vel: data.vel,
         speed: .5,
-        radius: 25,
+        radius: 30,
         game: data.game,
         health: 25,
         attack: 15,

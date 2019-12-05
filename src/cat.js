@@ -5,12 +5,12 @@ Util.inherits(Cat, MovingObject);
 // let timer = 1000;
 
 var catImage = new Image();
-catImage.src = './assets/cat2.png';
+catImage.src = './assets/cat.png';
 
 
 function Cat(data) {
 
-    this.radius = 20
+    this.radius = 40
     this.vel = data.vel || [0, 0];
     this.color = "red"
     this.game=data.game;
@@ -83,7 +83,7 @@ Cat.prototype.reduceSpeed = function reduceSpeed() {
     that.speed -= .7;
 
     }else if(that.speed<0){
-        that.speed=0;
+        this.vel=[0,0]
     }
 
 }

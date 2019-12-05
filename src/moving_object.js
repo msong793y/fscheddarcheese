@@ -1,4 +1,7 @@
 const Util = require("./util");
+let frameCount = 0;
+let currentLoopIndex = 0;
+const cycleLoop = [0, 1, 0, 2];
 
 
 function MovingObject(options) {
@@ -20,11 +23,50 @@ MovingObject.prototype.collideWith = function collideWith(otherObject) {
     // default do nothing
 };
 
+
+MovingObject.prototype.drawFrameMouse=function drawFrameMouse(frameX, frameY,ctx) {
+    ctx.drawImage(this.image,
+                 frameX * 32, frameY * 32,32, 32,
+            this.pos[0] - this.radius, this.pos[1] - this.radius,
+             this.radius*1.5, this.radius * 1.5)
+}
+
 MovingObject.prototype.draw = function draw(ctx) {
     ctx.fillStyle = this.color;
     // debugger
     if (this.type==="cat"){
-        ctx.drawImage(this.image,this.pos[0]-this.radius,this.pos[1]-this.radius,this.radius*2.5,this.radius*2.5)
+
+        //static cat
+
+        if (this.vel[0]===0 && this.vel[1]===0){
+            this.drawFrameMouse(1, 0, ctx);
+            return;
+        }
+
+        let direction = 0
+        if (this.vel[0] < 0) {
+            direction = 1
+        } else if (this.vel[0] > 0) {
+            direction = 2
+        }
+        // } else if (this.vel[1] < 0) {
+        //     direction = 2
+        // } else {
+        //     direction = 0
+        // }
+
+        frameCount++;
+        if (frameCount < (1000-(30*this.speed*this.multiplier))) {
+            this.drawFrameMouse(cycleLoop[currentLoopIndex], direction, ctx);
+            return;
+        }
+        frameCount = 0;
+        // ctx.clearRect(0, 0, canvas.width, canvas.height);
+        this.drawFrameMouse(cycleLoop[currentLoopIndex], direction, ctx);
+        currentLoopIndex++;
+        if (currentLoopIndex >= cycleLoop.length) {
+            currentLoopIndex = 0;
+        }
 
     } else if(this.type==="sloth") {
         console.log(this.vel)
@@ -32,22 +74,67 @@ MovingObject.prototype.draw = function draw(ctx) {
              this.pos[0] - this.radius, this.pos[1] - this.radius, this.radius * 2.5, this.radius * 2.5)
     } else if (this.type === "tinyMouse") {
 
-        if(this.vel[0]< 0){
-        ctx.drawImage(this.image, 0, 100, 32, 32,
-            this.pos[0] - this.radius, this.pos[1] - this.radius, this.radius*1.5, this.radius * 1.5)
-        }else{
-            ctx.drawImage(this.image, 0, 32, 32, 32,
-                this.pos[0] - this.radius, this.pos[1] - this.radius, this.radius * 1.5, this.radius * 1.5)
+        // debugger
+        let direction = 2
+        if (this.vel[0] < 0) {
+            direction = 3
+        } else if (this.vel[0] > 0) {
+            direction = 1
+        } else if (this.vel[1] < 0) {
+            direction = 2
+        } else {
+            direction = 0
         }
+        
+            frameCount++;
+            if (frameCount < 60) {
+            this.drawFrameMouse(cycleLoop[currentLoopIndex], direction, ctx);
+                return;
+            }
+            frameCount = 0;
+            // ctx.clearRect(0, 0, canvas.width, canvas.height);
+            this.drawFrameMouse(cycleLoop[currentLoopIndex], direction,ctx);
+            currentLoopIndex++;
+            if (currentLoopIndex >= cycleLoop.length) {
+                currentLoopIndex = 0;
+            }
+        
+
+
+
 
     } else if (this.type === "homingMouse") {
+        // if (this.vel[0] < 0) {
+        //     ctx.drawImage(this.image, 0, 100, 32, 32,
+        //         this.pos[0] - this.radius, this.pos[1] - this.radius, this.radius * 1.5, this.radius * 1.5)
+        // } else {
+        //     ctx.drawImage(this.image, 0, 32, 32, 32,
+        //         this.pos[0] - this.radius, this.pos[1] - this.radius, this.radius * 1.5, this.radius * 1.5)
+        // }
+        let direction = 2
         if (this.vel[0] < 0) {
-            ctx.drawImage(this.image, 0, 100, 32, 32,
-                this.pos[0] - this.radius, this.pos[1] - this.radius, this.radius * 1.5, this.radius * 1.5)
-        } else {
-            ctx.drawImage(this.image, 0, 32, 32, 32,
-                this.pos[0] - this.radius, this.pos[1] - this.radius, this.radius * 1.5, this.radius * 1.5)
+            direction = 3
+        } else if( this.vel[0]>0){
+            direction =1
+        } else if( this.vel[1]<0){
+            direction = 2
+        } else{
+            direction = 0
         }
+
+        frameCount++;
+        if (frameCount < 40) {
+            this.drawFrameMouse(cycleLoop[currentLoopIndex], direction, ctx);
+            return;
+        }
+        frameCount = 0;
+        // ctx.clearRect(0, 0, canvas.width, canvas.height);
+        this.drawFrameMouse(cycleLoop[currentLoopIndex], direction, ctx);
+        currentLoopIndex++;
+        if (currentLoopIndex >= cycleLoop.length) {
+            currentLoopIndex = 0;
+        }
+
     } else{
     ctx.beginPath();
     ctx.arc(

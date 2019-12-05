@@ -13,7 +13,7 @@ function TinyMouse(data){
         pos: data.pos,
         vel: data.vel,
         speed: .5,
-        radius: 20,
+        radius: 25,
         game: data.game,
         health: 20,
         attack: 10,
