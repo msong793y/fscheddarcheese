@@ -56,7 +56,7 @@ MovingObject.prototype.draw = function draw(ctx) {
         // }
 
         frameCount++;
-        if (frameCount < (1000-(30*this.speed*this.multiplier))) {
+        if (frameCount < (1000-(90*this.speed*this.multiplier))) {
             this.drawFrameMouse(cycleLoop[currentLoopIndex], direction, ctx);
             return;
         }
