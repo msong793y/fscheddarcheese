@@ -4,13 +4,13 @@ Util.inherits(Sloth, MovingObject);
 
 
 var slothImage = new Image();
-slothImage.src = './assets/sloth.png';
+slothImage.src = './assets/cheddar.png';
 
 
 
 function Sloth(data) {
     
-    data.radius = 20;
+    data.radius = 35;
     data.vel = data.vel || [0,0];
     data.game= data.game;
     data.speed=1.9

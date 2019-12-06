@@ -748,7 +748,10 @@ module.exports = Modal;
 /***/ (function(module, exports, __webpack_require__) {
 
 const Util = __webpack_require__(/*! ./util */ "./src/util.js");
-let frameCount = 0;
+let tmFrameCount = 0;
+let hmFrameCount =0 ;
+let catFrameCount = 0;
+let slothFrameCount = 0;
 let currentLoopIndex = 0;
 const cycleLoop = [0, 1, 0, 2];
 
@@ -804,12 +807,12 @@ MovingObject.prototype.draw = function draw(ctx) {
         //     direction = 0
         // }
 
-        frameCount++;
-        if (frameCount < (1000-(90*this.speed*this.multiplier))) {
+        catFrameCount++;
+        if (catFrameCount < (1000-(90*this.speed*this.multiplier))) {
             this.drawFrameMouse(cycleLoop[currentLoopIndex], direction, ctx);
             return;
         }
-        frameCount = 0;
+        catFrameCount = 0;
         // ctx.clearRect(0, 0, canvas.width, canvas.height);
         this.drawFrameMouse(cycleLoop[currentLoopIndex], direction, ctx);
         currentLoopIndex++;
@@ -818,9 +821,37 @@ MovingObject.prototype.draw = function draw(ctx) {
         }
 
     } else if(this.type==="sloth") {
+        if (this.vel[0] === 0 && this.vel[1] === 0) {
+            this.drawFrameMouse(1, 0, ctx);
+            return;
+        }
+        // debugger
         console.log(this.vel)
-        ctx.drawImage(this.image,5,5,30,30,
-             this.pos[0] - this.radius, this.pos[1] - this.radius, this.radius * 2.5, this.radius * 2.5)
+        let direction = 2
+        if (this.vel[0] < 0) {
+            direction = 1
+        } else if (this.vel[0] > 0) {
+            direction = 2
+        } else if (this.vel[1] < 0) {
+            direction = 3
+        } else {
+            direction = 0
+        }
+
+        slothFrameCount++;
+        if (slothFrameCount < (1000 - (90 * this.speed * this.multiplier))) {
+            this.drawFrameMouse(cycleLoop[currentLoopIndex], direction, ctx);
+            return;
+        }
+        slothFrameCount = 0;
+        // ctx.clearRect(0, 0, canvas.width, canvas.height);
+        this.drawFrameMouse(cycleLoop[currentLoopIndex], direction, ctx);
+        currentLoopIndex++;
+        if (currentLoopIndex >= cycleLoop.length) {
+            currentLoopIndex = 0;
+        }
+
+
     } else if (this.type === "tinyMouse") {
 
         // debugger
@@ -835,12 +866,12 @@ MovingObject.prototype.draw = function draw(ctx) {
             direction = 0
         }
         
-            frameCount++;
-            if (frameCount < 60) {
+            tmFrameCount++;
+            if (tmFrameCount < 60) {
             this.drawFrameMouse(cycleLoop[currentLoopIndex], direction, ctx);
                 return;
             }
-            frameCount = 0;
+             tmFrameCount = 0;
             // ctx.clearRect(0, 0, canvas.width, canvas.height);
             this.drawFrameMouse(cycleLoop[currentLoopIndex], direction,ctx);
             currentLoopIndex++;
@@ -871,12 +902,12 @@ MovingObject.prototype.draw = function draw(ctx) {
             direction = 0
         }
 
-        frameCount++;
-        if (frameCount < 40) {
+        hmFrameCount++;
+        if (hmFrameCount < 40) {
             this.drawFrameMouse(cycleLoop[currentLoopIndex], direction, ctx);
             return;
         }
-        frameCount = 0;
+        hmFrameCount = 0;
         // ctx.clearRect(0, 0, canvas.width, canvas.height);
         this.drawFrameMouse(cycleLoop[currentLoopIndex], direction, ctx);
         currentLoopIndex++;
@@ -962,13 +993,13 @@ Util.inherits(Sloth, MovingObject);
 
 
 var slothImage = new Image();
-slothImage.src = './assets/sloth.png';
+slothImage.src = './assets/cheddar.png';
 
 
 
 function Sloth(data) {
     
-    data.radius = 20;
+    data.radius = 35;
     data.vel = data.vel || [0,0];
     data.game= data.game;
     data.speed=1.9
