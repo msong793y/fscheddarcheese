@@ -59,7 +59,7 @@ MovingObject.prototype.draw = function draw(ctx) {
         // }
 
         catFrameCount++;
-        if (catFrameCount < (1000-(90*this.speed*this.multiplier))) {
+        if (catFrameCount < (1000-(50*this.speed*this.multiplier))) {
             this.drawFrameMouse(cycleLoop[currentLoopIndex], direction, ctx);
             return;
         }
@@ -77,7 +77,6 @@ MovingObject.prototype.draw = function draw(ctx) {
             return;
         }
         // debugger
-        console.log(this.vel)
         let direction = 2
         if (this.vel[0] < 0) {
             direction = 1

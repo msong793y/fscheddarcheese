@@ -10,7 +10,7 @@ slothImage.src = './assets/cheddar.png';
 
 function Sloth(data) {
     
-    data.radius = 35;
+    data.radius = 30;
     data.vel = data.vel || [0,0];
     data.game= data.game;
     data.speed=1.9

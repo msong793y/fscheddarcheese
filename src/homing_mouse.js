@@ -16,7 +16,7 @@ function HomingMouse(data) {
         radius: 30,
         game: data.game,
         health: 25,
-        attack: 15,
+        attack: 5,
         range: 280,
         type: "homingMouse",
         color: "pink",

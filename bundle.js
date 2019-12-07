@@ -624,7 +624,7 @@ function HomingMouse(data) {
         radius: 30,
         game: data.game,
         health: 25,
-        attack: 15,
+        attack: 5,
         range: 280,
         type: "homingMouse",
         color: "pink",
@@ -808,7 +808,7 @@ MovingObject.prototype.draw = function draw(ctx) {
         // }
 
         catFrameCount++;
-        if (catFrameCount < (1000-(90*this.speed*this.multiplier))) {
+        if (catFrameCount < (1000-(50*this.speed*this.multiplier))) {
             this.drawFrameMouse(cycleLoop[currentLoopIndex], direction, ctx);
             return;
         }
@@ -826,7 +826,6 @@ MovingObject.prototype.draw = function draw(ctx) {
             return;
         }
         // debugger
-        console.log(this.vel)
         let direction = 2
         if (this.vel[0] < 0) {
             direction = 1
@@ -999,7 +998,7 @@ slothImage.src = './assets/cheddar.png';
 
 function Sloth(data) {
     
-    data.radius = 35;
+    data.radius = 30;
     data.vel = data.vel || [0,0];
     data.game= data.game;
     data.speed=1.9
@@ -1058,7 +1057,7 @@ function TinyMouse(data){
         radius: 25,
         game: data.game,
         health: 20,
-        attack: 10,
+        attack: 5,
         type: "tinyMouse",
         color: "none",
         image: tMImage

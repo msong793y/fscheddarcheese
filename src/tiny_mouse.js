@@ -16,7 +16,7 @@ function TinyMouse(data){
         radius: 25,
         game: data.game,
         health: 20,
-        attack: 10,
+        attack: 5,
         type: "tinyMouse",
         color: "none",
         image: tMImage
