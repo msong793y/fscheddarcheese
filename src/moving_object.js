@@ -59,11 +59,12 @@ MovingObject.prototype.draw = function draw(ctx) {
         // }
 
         catFrameCount++;
-        if (catFrameCount < (1000-(50*this.speed*this.multiplier))) {
+        if (catFrameCount > (100-(10*this.speed*this.multiplier))) {
+             catFrameCount = 0;
             this.drawFrameMouse(cycleLoop[currentLoopIndex], direction, ctx);
             return;
         }
-        catFrameCount = 0;
+       
         // ctx.clearRect(0, 0, canvas.width, canvas.height);
         this.drawFrameMouse(cycleLoop[currentLoopIndex], direction, ctx);
         currentLoopIndex++;
@@ -89,11 +90,12 @@ MovingObject.prototype.draw = function draw(ctx) {
         }
 
         slothFrameCount++;
-        if (slothFrameCount < (1000 - (90 * this.speed * this.multiplier))) {
-            this.drawFrameMouse(cycleLoop[currentLoopIndex], direction, ctx);
-            return;
+        if (slothFrameCount > 80) {
+          slothFrameCount = 0;
+          this.drawFrameMouse(cycleLoop[currentLoopIndex], direction, ctx);
+          return;
         }
-        slothFrameCount = 0;
+    
         // ctx.clearRect(0, 0, canvas.width, canvas.height);
         this.drawFrameMouse(cycleLoop[currentLoopIndex], direction, ctx);
         currentLoopIndex++;
@@ -117,11 +119,13 @@ MovingObject.prototype.draw = function draw(ctx) {
         }
         
             tmFrameCount++;
-            if (tmFrameCount < 60) {
-            this.drawFrameMouse(cycleLoop[currentLoopIndex], direction, ctx);
-                return;
+            if (tmFrameCount > 80) {
+              tmFrameCount = 0;
+              this.drawFrameMouse(cycleLoop[currentLoopIndex], direction, ctx);
+              return;
             }
-             tmFrameCount = 0;
+            
+            
             // ctx.clearRect(0, 0, canvas.width, canvas.height);
             this.drawFrameMouse(cycleLoop[currentLoopIndex], direction,ctx);
             currentLoopIndex++;
@@ -153,11 +157,12 @@ MovingObject.prototype.draw = function draw(ctx) {
         }
 
         hmFrameCount++;
-        if (hmFrameCount < 40) {
-            this.drawFrameMouse(cycleLoop[currentLoopIndex], direction, ctx);
-            return;
+        if (hmFrameCount > 80) {
+          hmFrameCount = 0;
+          this.drawFrameMouse(cycleLoop[currentLoopIndex], direction, ctx);
+          return;
         }
-        hmFrameCount = 0;
+        
         // ctx.clearRect(0, 0, canvas.width, canvas.height);
         this.drawFrameMouse(cycleLoop[currentLoopIndex], direction, ctx);
         currentLoopIndex++;

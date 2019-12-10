@@ -1,6 +1,6 @@
 {
-  "name": "metaSloth-node",
-  "description": "meta sloth the game",
+  "name": "Cheddar Cheese",
+  "description": "cheddar cheese the game",
   "main": "server.js",
   "scripts": {
     "start": "node server.js"
