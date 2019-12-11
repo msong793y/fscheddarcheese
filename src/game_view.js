@@ -9,8 +9,8 @@ let vec=[];
 
 
 
-const GameView = function ( ctx,canvas) {
-    this.game = new Game();
+const GameView = function ( ctx,canvas,game) {
+    this.game = game;
     this.canvas=canvas;
     this.ctx = ctx;
     this.sloth = this.game.sloth;
@@ -120,9 +120,7 @@ GameView.prototype.start = function start() {
     this.bindKeyHandlers();
     this.clickHandlers();
     this.lastTime = performance.now();
-    // this.lastTime=0;
-    // start the animation
-    // debugger;
+  
     requestAnimationFrame(this.animate.bind(this));
     
 };

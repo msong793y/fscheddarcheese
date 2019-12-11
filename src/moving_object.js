@@ -60,7 +60,7 @@ MovingObject.prototype.draw = function draw(ctx) {
         // }
 
         catFrameCount++;
-        if (catFrameCount > (100-(10*this.speed*this.multiplier))) {
+        if (catFrameCount > (10-(10*this.speed*this.multiplier))) {
              catFrameCount = 0;
             this.drawFrameMouse(cycleLoop[currentLoopIndex], direction, ctx);
             return;
@@ -139,13 +139,7 @@ MovingObject.prototype.draw = function draw(ctx) {
 
 
     } else if (this.type === "homingMouse") {
-        // if (this.vel[0] < 0) {
-        //     ctx.drawImage(this.image, 0, 100, 32, 32,
-        //         this.pos[0] - this.radius, this.pos[1] - this.radius, this.radius * 1.5, this.radius * 1.5)
-        // } else {
-        //     ctx.drawImage(this.image, 0, 32, 32, 32,
-        //         this.pos[0] - this.radius, this.pos[1] - this.radius, this.radius * 1.5, this.radius * 1.5)
-        // }
+
         let direction = 2
         if (this.vel[0] < 0) {
             direction = 3

@@ -20,9 +20,11 @@ const Game = function() {
     this.homingMouse=[];
     this.entities = [];
     this.level = 1;
+    this.soundActive=true;
     this.gameTinyMouseCount=0;
     this.gameHomingMouseCount=0;
-    // debugger
+    this.yippieSound = new Audio('./assets/yippie.mp3');
+    this.yippieSound.volume = .5;
     this.addSloth();
     this.addCat();
     this.setStage();
@@ -31,13 +33,20 @@ const Game = function() {
 
 }
 
+Game.prototype.toggleSound = function () {
+    if (this.soundActive===true){
+        this.soundActive= false;
+    } else{
+        this.soundActive= true;
+    }
+
+}
 
 
 
 Game.prototype.setStage = function () {
    this.gameTinyMouseCount=50
    this.gameHomingMouseCount=20
-    // debugger;
 
    this.addEnemies(20,5);
    
@@ -121,7 +130,9 @@ Game.prototype.checkCollisions=function(){
             // const collision = sloth.collideWith(object)
             // if(collision)return
             sloth.takeDamage(object.attack)
+            if (this.soundActive===true){
             sloth.ouchSound.play();
+            }
         }
         if (cat.isCollidedWith(object)) {
             // const collision = sloth.collideWith(object)
@@ -145,9 +156,6 @@ Game.prototype.checkInRange = function () {
     }
 }
 
-// Game.prototype.stopSloth() = function (){
-//     console.log("hi")
-// }
 
 
 // intial rendering starting position
@@ -165,7 +173,7 @@ Game.prototype.draw = function (ctx){
     ctx.clearRect(0,0,this.DIM_X,this.DIM_Y)
     ctx.drawImage(backgroundImage, 0, 0);
     // ctx.fillRect(0, 0, this.DIM_X, this.DIM_Y);
-    ctx.fillStyle= "red";
+    ctx.fillStyle= "yellow";
     ctx.font = "25px Arial";
     ctx.fillText(`Health ${this.sloth.health} /5000`, 50, 480);
     ctx.fillText(`${totalEnemiesCount} Enemies Left`, 550, 480);
@@ -192,7 +200,8 @@ Game.prototype.remove = function remove(object) {
             this.homingMouse.splice(this.homingMouse.indexOf(object), 1);
             this.enemies = this.tinyMouse.concat(this.homingMouse)
             this.entities = [this.sloth, this.cat].concat(this.enemies)
-            
+            if (this.soundActive === true) 
+            {this.yippieSound.play();}
             break;
         case "tinyMouse":
             this.tinyMouse.splice(this.tinyMouse.indexOf(object), 1);
