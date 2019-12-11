@@ -60,7 +60,7 @@ MovingObject.prototype.draw = function draw(ctx) {
         // }
 
         catFrameCount++;
-        if (catFrameCount > (10-(10*this.speed*this.multiplier))) {
+        if (catFrameCount > (130-(10*this.speed*this.multiplier))) {
              catFrameCount = 0;
             this.drawFrameMouse(cycleLoop[currentLoopIndex], direction, ctx);
             return;
