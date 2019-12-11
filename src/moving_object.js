@@ -20,6 +20,7 @@ function MovingObject(options) {
     this.type= options.type
     this.range=options.range
     this.image=options.image
+    this.ouchSound=options.ouchSound||null
 };
 
 MovingObject.prototype.collideWith = function collideWith(otherObject) {

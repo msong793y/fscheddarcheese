@@ -19,8 +19,10 @@ function Sloth(data) {
     data.attack= 0;
     data.type= "sloth";
     data.image = slothImage;
+    data.ouchSound = new Audio('./assets/ouch.mp3');
+    data.ouchSound.volume = 1;
     MovingObject.call(this,data);
-    
+  
 
 }
 var timeout = null

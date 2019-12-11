@@ -121,6 +121,7 @@ Game.prototype.checkCollisions=function(){
             // const collision = sloth.collideWith(object)
             // if(collision)return
             sloth.takeDamage(object.attack)
+            sloth.ouchSound.play();
         }
         if (cat.isCollidedWith(object)) {
             // const collision = sloth.collideWith(object)
