@@ -24,7 +24,8 @@ const Game = function() {
     this.gameTinyMouseCount=0;
     this.gameHomingMouseCount=0;
     this.yippieSound = new Audio('./assets/yippie.mp3');
-    this.yippieSound.volume = .5;
+    this.yippieSound.volume = .3;
+    this.gameStatus = "continue";
     this.addSloth();
     this.addCat();
     this.setStage();
@@ -45,8 +46,8 @@ Game.prototype.toggleSound = function () {
 
 
 Game.prototype.setStage = function () {
-   this.gameTinyMouseCount=50
-   this.gameHomingMouseCount=20
+   this.gameTinyMouseCount=50;
+   this.gameHomingMouseCount=20;
 
    this.addEnemies(20,5);
    
@@ -70,7 +71,7 @@ Game.prototype.checkGameProgression = function () {
 
     } 
     else if (this.gameTinyMouseCount < 3 && this.gameHomingMouseCount < 1 && this.tinyMouse.length<2 &&this.homingMouse.length===0){
-        alert("you won")
+        this.gameStatus = "won";
     }
       
     
@@ -162,7 +163,7 @@ Game.prototype.checkInRange = function () {
 Game.prototype.startingPosition = function (){
     let x = this.DIM_X-30;
     let y = Math.random()* this.DIM_Y;
-    return [x,y]
+    return [x,y];
 }
 
 //Drawing enemies on the board

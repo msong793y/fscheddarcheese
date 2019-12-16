@@ -211,10 +211,10 @@ MovingObject.prototype.remove = function remove() {
 };
 
 MovingObject.prototype.takeDamage = function takeDamage(attack) {
-    this.health-= attack
+    this.health-= attack;
     if( this.health < 0){
         if (this.type === "sloth"){
-            alert("gameOver")
+            this.game.gameStatus= "lost";
         } else if(this.type === "tinyMouse") {
         this.game.remove(this)
         }

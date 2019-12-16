@@ -20,7 +20,7 @@ function Sloth(data) {
     data.type= "sloth";
     data.image = slothImage;
     data.ouchSound = new Audio('./assets/ouch.mp3');
-    data.ouchSound.volume = .6;
+    data.ouchSound.volume = .4;
     MovingObject.call(this,data);
   
 
