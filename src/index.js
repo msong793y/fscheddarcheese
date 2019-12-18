@@ -62,5 +62,10 @@ window.addEventListener('DOMContentLoaded', () => {
       
     })
 
+    let pause = document.getElementById('pause');
+    pause.addEventListener("click",()=>{
+        game.togglePause();
+    })
+
 })
 

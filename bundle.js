@@ -259,6 +259,7 @@ const Game = function() {
     this.yippieSound = new Audio('./assets/yippie.mp3');
     this.yippieSound.volume = .3;
     this.gameStatus = "continue";
+    this.gamePuase = "continue"
     this.addSloth();
     this.addCat();
     this.setStage();
@@ -347,10 +348,11 @@ Game.prototype.addCat = function () {
 //each Step
 
 Game.prototype.step = function step(delta) {
+    if(this.gamePuase==="continue"){
     this.moveObjects(delta);
     this.checkCollisions();
     this.checkInRange();
-    this.checkGameProgression();
+    this.checkGameProgression();}
 };
 
 
@@ -401,6 +403,8 @@ Game.prototype.startingPosition = function (){
 
 //Drawing enemies on the board
 Game.prototype.draw = function (ctx){
+
+    if (this.gamePuase === "continue"){
     let totalEnemiesCount = this.enemies.length + this.gameTinyMouseCount + this.gameHomingMouseCount;
 
 
@@ -416,6 +420,24 @@ Game.prototype.draw = function (ctx){
     for( let i=0; i<this.entities.length; i++){
         this.entities[i].draw(ctx)
     }
+    } else {
+        
+        
+        ctx.fillStyle="Blue";
+        ctx.font= "50px Arial";
+        ctx.fillText("PAUSED",350, 280);
+    }
+}
+
+Game.prototype.togglePause = function(){
+    
+
+    if (this.gamePuase=== "continue"){
+        this.gamePuase="noContinue";
+    } else{
+        this.gamePuase="continue";
+    }
+
 }
 
 //Moving Entities
@@ -743,6 +765,11 @@ window.addEventListener('DOMContentLoaded', () => {
     restart.addEventListener('click', () => {
         location.reload();
       
+    })
+
+    let pause = document.getElementById('pause');
+    pause.addEventListener("click",()=>{
+        game.togglePause();
     })
 
 })

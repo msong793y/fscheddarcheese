@@ -22,9 +22,11 @@
 
 
 .content{
-    /* position: absolute; */
+    position: relative;
     display:flex;
     flex-direction: column;
+    /* justify-content: center; */
+    align-items: center;
     /* top: 300px; */
     /* background-color: darkgreen; */
 }
@@ -35,9 +37,10 @@
 }
 
 .buttons {
+    margin-left: 3%;
     display: flex;
     flex-direction: row;
-    justify-content: center;
+    align-items: center;
 
 }
 
@@ -56,7 +59,7 @@ button {
     margin-top: 10px;
     margin-right: 20px;
     margin-bottom: 10px;
-    border: none;
+    border: 1px solid grey;
     padding: 10px;
     border-radius: 5px;
     color: red;
@@ -94,6 +97,8 @@ button:disabled {
         background-color: rgba(0, 0, 0, 0.5);
         opacity: 0;
         visibility: hidden;
+        z-index: 12;
+
         transform: scale(1.1);
         transition: visibility 0s linear 0.25s, opacity 0.25s 0s, transform 0.25s;
     }
@@ -107,6 +112,7 @@ button:disabled {
         width: 24rem;
         border-radius: 0.5rem;
         text-align: center;
+        z-index: 12;
     }
     .close-button {
         float: right;
@@ -130,8 +136,8 @@ button:disabled {
 
 
 #game-canvas{
-    margin-top: 70px;
-    margin-left: 10%;
+    margin-top: 8%;
+    margin-left: 2%;
     height: 500px;
     width: 800px;
     background-color: black;
