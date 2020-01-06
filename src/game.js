@@ -32,7 +32,6 @@ const Game = function() {
     this.setStage();
     
     
-
 }
 
 Game.prototype.toggleSound = function () {
@@ -130,16 +129,14 @@ Game.prototype.checkCollisions=function(){
         // debugger
         const object = this.enemies[i];
         if (sloth.isCollidedWith(object)){
-            // const collision = sloth.collideWith(object)
-            // if(collision)return
+           
             sloth.takeDamage(object.attack)
             if (this.soundActive===true){
             sloth.ouchSound.play();
             }
         }
         if (cat.isCollidedWith(object)) {
-            // const collision = sloth.collideWith(object)
-            // if(collision)return
+
             object.takeDamage(cat.attack*cat.speed)
         }
     }
@@ -149,7 +146,6 @@ Game.prototype.checkCollisions=function(){
 //checking to see if object is in range:
 Game.prototype.checkInRange = function () {
     const sloth = this.sloth;
-    // const homingMouse = this.homingMouse;
     for (let i = 0; i < this.homingMouse.length; i++) {
         
         const hMouse = this.homingMouse[i];

@@ -28,7 +28,7 @@ window.addEventListener('DOMContentLoaded', () => {
         bgMusic.pause();
         game.toggleSound();
         unmute.disabled=false;
-        mute.disabled=true
+        mute.disabled=true;
         
     })
     
