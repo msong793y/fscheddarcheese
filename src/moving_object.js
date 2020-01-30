@@ -208,7 +208,7 @@ MovingObject.prototype.isInRangeOf = function isInRangeOf(range,otherObject) {
 MovingObject.prototype.remove = function remove() {
     // debugger
     this.game.remove(this);
-};
+};//j
 
 MovingObject.prototype.takeDamage = function takeDamage(attack) {
     this.health-= attack;
