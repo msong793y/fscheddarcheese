@@ -8,7 +8,7 @@ const Modal = require("./modal")
 const MovingObject = require("./moving_object.js");
 
 
-// testing
+// testingg
 window.MovingObject = MovingObject;
 
 // music
